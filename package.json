@@ -1,0 +1,14 @@
+{
+  "name": "brady",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@types/node": "^20.10.8",
+    "cypress": "^13.6.2",
+    "typescript": "^5.3.3"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.2"
+  }
+}
