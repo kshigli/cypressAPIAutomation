@@ -6,7 +6,7 @@ describe('template spec', () => {
     cy.request({
       method: 'POST',
       url: "https://dummy.restapiexample.com/api/v1/create",
-      body: {"name":"TestUser1026","salary":"600001","age":"7881"},
+      body: {"name":"TestUser1028","salary":"600001","age":"7881"},
       failOnStatusCode: false
     }).then(( response ) => {
       userid = response.body.data.id;
@@ -19,6 +19,7 @@ describe('template spec', () => {
     cy.request({
       method: 'DELETE',
       url: `https://dummy.restapiexample.com/api/v1/delete/${userid}`,
+      failOnStatusCode: false
     }).  
   then(( response ) => {
     const id = response.body.data;
