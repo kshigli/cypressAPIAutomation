@@ -11,6 +11,8 @@ jobs:
       # https://github.com/cypress-io/github-action
       - name: yarn cypress run
         uses: cypress-io/github-action@v5
+        with:
+          browser: true
       # after the test run completes
       # store videos and any screenshots
       # NOTE: screenshots will be generated only if E2E test failed
