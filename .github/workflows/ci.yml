@@ -4,14 +4,12 @@ on:
         branches:
             - cypress_api_test
 jobs:
-  Cypress-Test:
+  cypress-run:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout GitCode
-        uses: actions/checkout@v2
-  
-      - name: Run Cypress Test
-        uses: cypress-io/github-action@v4
-
-      -  run: yarn
-      -  run: yarn cypress run
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: yarn cypress run
+        uses: cypress-io/github-action@v6.1.0
+        with:
+          browser: true
