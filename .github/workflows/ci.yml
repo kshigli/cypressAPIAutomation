@@ -1,15 +1,24 @@
 name: End-to-end tests
-on: 
-    push:
-        branches:
-            - cypress_api_test
+on: [push]
 jobs:
   cypress-run:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
+      # Install NPM dependencies, cache them correctly
+      # and run all Cypress tests
+      # https://github.com/cypress-io/github-action
       - name: yarn cypress run
-        uses: cypress-io/github-action@v6.1.0
+        uses: cypress-io/github-action@v5
+      # after the test run completes
+      # store videos and any screenshots
+      # NOTE: screenshots will be generated only if E2E test failed
+      # thus we store screenshots only on failures
+      # Alternative: create and commit an empty cypress/screenshots folder
+      # to always have something to upload
+      - uses: actions/upload-artifact@v3
+        if: failure()
         with:
-          browser: true
+          name: cypress-screenshots
+          path: cypress/screenshots
